@@ -58,7 +58,7 @@ const HomePage: React.FC = () => {
         />
       </PageHeader>
       {loading && <BeatLoader color="#fff842" margin={5} />}
-      {!loading && repositories.length > 0 && (
+      {!loading && repositories?.length > 0 && (
         <PageContent>
           <ModalRepository />
           <TableRepository />
