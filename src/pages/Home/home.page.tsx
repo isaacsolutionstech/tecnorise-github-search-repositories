@@ -12,6 +12,7 @@ import {
   ParticleText,
   TableRepository,
   ModalRepository,
+  SubTitle,
 } from "@/components";
 import { SEARCH_REPOSITORIES } from "@/graphql";
 import { setRepositories, setSearch } from "@/redux";
@@ -19,7 +20,7 @@ import { ReduxRootState } from "@/types/redux/redux-root";
 
 const HomePage: React.FC = () => {
   const dispatch = useDispatch();
-  const [searchRepositories, { loading }] = useLazyQuery(SEARCH_REPOSITORIES);
+  const [searchRepositories, { loading, called }] = useLazyQuery(SEARCH_REPOSITORIES);
 
   const searchTerm = useSelector(({ search }: ReduxRootState) => search.value);
   const repositories = useSelector(
@@ -58,6 +59,11 @@ const HomePage: React.FC = () => {
         />
       </PageHeader>
       {loading && <BeatLoader color="#fff842" margin={5} />}
+      {!loading && called && repositories?.length === 0 && (
+        <PageContent>
+          <SubTitle>Nenhum repositório encontrado :(</SubTitle>
+        </PageContent>
+      )}
       {!loading && repositories?.length > 0 && (
         <PageContent>
           <ModalRepository />
