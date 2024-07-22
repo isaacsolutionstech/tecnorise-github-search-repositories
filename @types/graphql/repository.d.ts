@@ -36,6 +36,10 @@ export interface RepositoryForks {
   totalCount: number;
 }
 
+export interface RepositoryWatch {
+  totalCount: number;
+}
+
 export interface RepositoryPrimaryLanguage {
   name: string;
 }
@@ -55,6 +59,7 @@ export interface RepositoryDetailGraphqlType {
   createdAt: string;
   forks: RepositoryForks;
   issues: RepositoryIssues;
+  watchers: RepositoryWatch;
   owner: RepositoryOwnerType;
   pullRequests: RepositoryPullRequest;
   commitComments: RepositoryCommitComments;

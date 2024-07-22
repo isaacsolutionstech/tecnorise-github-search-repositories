@@ -70,10 +70,10 @@ const ModalRepository: React.FC = () => {
   const processStatisticsData = useMemo(() => {
     if (!repository) return;
 
-    const { issues, pullRequests, commitComments, forks } = repository;
+    const { issues, pullRequests, commitComments, forks, watchers } = repository;
 
     return {
-      labels: ["Issues Abertas", "PRs Abertas", "Commits Comentados", "Forks"],
+      labels: ["Issues Abertas", "PRs Abertas", "Commits Comentados", "Forks", "Watchers"],
       datasets: [
         {
           label: "Total",
@@ -83,12 +83,14 @@ const ModalRepository: React.FC = () => {
             pullRequests.totalCount,
             commitComments.totalCount,
             forks.totalCount,
+            watchers.totalCount,
           ],
           backgroundColor: [
             "rgba(255, 99, 132, 0.6)",
             "rgba(54, 162, 235, 0.6)",
             "rgba(60, 235, 54, 0.6)",
             "rgba(70, 99, 132, 0.6)",
+            "rgba(0, 225, 255, 0.6)",
           ],
         },
       ],

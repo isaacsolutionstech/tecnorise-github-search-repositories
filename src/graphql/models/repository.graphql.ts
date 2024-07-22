@@ -47,6 +47,9 @@ export const REPOSITORY_DETAIL = gql`
       forks {
         totalCount
       }
+      watchers {
+        totalCount
+      }
       issues(states: OPEN) {
         totalCount
       }
